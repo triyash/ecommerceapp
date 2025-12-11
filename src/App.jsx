@@ -5,6 +5,7 @@ import ProductDetail from "./pages/ProductDetail";
 import Cart from "./pages/Cart";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminProducts from "./pages/admin/AdminProducts";
+import AdminOrders from "./pages/admin/AdminOrders";   // <-- NEW IMPORT
 
 export default function App() {
   return (
@@ -28,6 +29,7 @@ export default function App() {
           {/* admin */}
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/admin/products" element={<AdminProducts />} />
+          <Route path="/admin/orders" element={<AdminOrders />} />   {/* <-- NEW ROUTE */}
         </Routes>
       </main>
     </div>
