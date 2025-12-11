@@ -1,11 +1,14 @@
 import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
+
 import Home from "./pages/Home";
 import ProductDetail from "./pages/ProductDetail";
 import Cart from "./pages/Cart";
+import Checkout from "./pages/Checkout";
+
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminProducts from "./pages/admin/AdminProducts";
-import AdminOrders from "./pages/admin/AdminOrders";   // <-- NEW IMPORT
+import AdminOrders from "./pages/admin/AdminOrders";
 
 export default function App() {
   return (
@@ -26,10 +29,13 @@ export default function App() {
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/cart" element={<Cart />} />
 
+          {/* Checkout */}
+          <Route path="/checkout" element={<Checkout />} />
+
           {/* admin */}
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/admin/products" element={<AdminProducts />} />
-          <Route path="/admin/orders" element={<AdminOrders />} />   {/* <-- NEW ROUTE */}
+          <Route path="/admin/orders" element={<AdminOrders />} />
         </Routes>
       </main>
     </div>
