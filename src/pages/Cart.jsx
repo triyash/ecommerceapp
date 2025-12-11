@@ -1,5 +1,6 @@
 import React from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
+import { Link } from "react-router-dom";
 
 export default function Cart() {
   const [cart, setCart] = useLocalStorage("cart", []);
@@ -13,23 +14,51 @@ export default function Cart() {
   return (
     <div>
       <h1 className="text-2xl font-bold mb-4">Cart</h1>
+
       {cart.length === 0 ? (
         <div>No items</div>
       ) : (
         <div>
+          {/* Cart Items */}
           {cart.map((item) => (
-            <div key={item.id} className="flex items-center gap-4 p-2 border rounded mb-2 bg-white">
-              <img src={item.image} alt="" className="w-16 h-16 object-contain" />
+            <div
+              key={item.id}
+              className="flex items-center gap-4 p-2 border rounded mb-2 bg-white"
+            >
+              <img
+                src={item.image}
+                alt=""
+                className="w-16 h-16 object-contain"
+              />
+
               <div className="flex-1">
                 <div>{item.title}</div>
                 <div>${item.price}</div>
               </div>
+
               <div>Qty: {item.qty || 1}</div>
-              <button onClick={() => removeItem(item.id)} className="text-red-600">Remove</button>
+
+              <button
+                onClick={() => removeItem(item.id)}
+                className="text-red-600"
+              >
+                Remove
+              </button>
             </div>
           ))}
 
+          {/* Total */}
           <div className="mt-4 font-bold">Total: ${total.toFixed(2)}</div>
+
+          {/* Proceed to Checkout Button */}
+          <div className="mt-4">
+            <Link
+              to="/checkout"
+              className="bg-blue-600 text-white px-4 py-2 rounded inline-block"
+            >
+              Proceed to Checkout
+            </Link>
+          </div>
         </div>
       )}
     </div>
